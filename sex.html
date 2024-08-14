@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>性别预测器</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-right: 10px;
+    }
+
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #4CAF50;
+      width: 0%;
+      border-radius: 5px;
+      transition: width 5s ease-in-out;
+    }
+
+    .result {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>性别计算器</h1>
+    <form id="gender-form">
+      <div class="form-group">
+        <label for="pee-style">您的小便方式:</label>
+        <input type="radio" id="pee-style-a" name="pee-style" value="a">
+        <label for="pee-style-a">站立</label>
+        <input type="radio" id="pee-style-b" name="pee-style" value="b">
+        <label for="pee-style-b">蹲下</label>
+        <input type="radio" id="pee-style-c" name="pee-style" value="c">
+        <label for="pee-style-c">玩原神</label>
+      </div>
+      <div class="form-group">
+        <label for="genshin">您玩原神吗:</label>
+        <input type="radio" id="genshin-a" name="genshin" value="a">
+        <label for="genshin-a">玩</label>
+        <input type="radio" id="genshin-b" name="genshin" value="b">
+        <label for="genshin-b">喜欢玩</label>
+        <input type="radio" id="genshin-c" name="genshin" value="c">
+        <label for="genshin-c">我爱玩原神</label>
+      </div>
+      <div class="form-group">
+        <label for="bilibili">您对2024年的b站看法是什么:</label>
+        <input type="radio" id="bilibili-a" name="bilibili" value="a">
+        <label for="bilibili-a">没有看法</label>
+        <input type="radio" id="bilibili-b" name="bilibili" value="b">
+        <label for="bilibili-b">豪赤</label>
+        <input type="radio" id="bilibili-c" name="bilibili" value="c">
+        <label for="bilibili-c">我爱玩原神</label>
+      </div>
+      <button type="submit">预测性别</button>
+    </form>
+    <div class="progress-bar">
+      <div class="progress-bar-fill"></div>
+    </div>
+    <div class="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('gender-form');
+    const progressBarFill = document.querySelector('.progress-bar-fill');
+    const resultDiv = document.querySelector('.result');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      progressBarFill.style.width = '0%';
+      resultDiv.textContent = '';
+
+      let timer = setInterval(() => {
+        let width = parseInt(progressBarFill.style.width, 10) + 20;
+        progressBarFill.style.width = width + '%';
+
+        if (width >= 100) {
+          clearInterval(timer);
+
+          const peeStyle = document.querySelector('input[name="pee-style"]:checked').value;
+          let gender = '';
+
+          if (peeStyle === 'a') {
+            gender = '男性';
+          } else if (peeStyle === 'b') {
+            gender = '女性';
+          } else {
+            gender = '玩原神玩的';
+          }
+
+          setTimeout(() => {
+            resultDiv.textContent = `我预测的性别是：${gender}`;
+          }, 5000); // 5 秒后显示结果
+        }
+      }, 50);
+    });
+  </script>
+</body>
+</html>
