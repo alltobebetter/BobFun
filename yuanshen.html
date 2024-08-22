@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fullscreen Video</title>
+    <title>黑神话悟空</title>
     <style>
         body, html {
             margin: 0;
@@ -33,7 +33,7 @@
     </style>
 </head>
 <body>
-    <div id="start-message">点击开始游玩</div>
+    <div id="start-message">点击任意位置开始游戏</div>
     <video loop playsinline>
         <source src="./img/原神.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -45,7 +45,7 @@
         const startMessage = document.getElementById('start-message');
 
         // 监听点击事件
-        startMessage.addEventListener('click', () => {
+        document.addEventListener('click', () => {
             // 隐藏开始消息
             startMessage.style.display = 'none';
             // 显示视频并播放
@@ -53,6 +53,12 @@
             video.play();
             // 将背景颜色改为黑色
             document.body.style.backgroundColor = 'black';
+        });
+
+        // 监听视频结束事件
+        video.addEventListener('ended', () => {
+            // 跳转到 aibob.top
+            window.location.href = 'https://aibob.top';
         });
     </script>
 </body>
