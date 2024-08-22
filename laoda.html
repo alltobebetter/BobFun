@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>自适应网页</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh; /* 确保 body 填充整个屏幕高度 */
-    }
-    h1 {
-      margin-bottom: 20px;
-    }
-    img {
-      max-width: 90%; /* 图片最大宽度为视口宽度的 90% */
-      height: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>居中页面</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-  <h1>这是一个标题</h1>
-  <img src="placeholder.jpg" alt="图片">
-  <p>这是一行文字</p>
+    <p>欢迎来到这个页面！</p>
+
+    <img src="your_image.jpg" alt="图片描述">
+
+    <input type="text" id="inputField" placeholder="请输入 1">
+    <button onclick="checkInput()">跳转</button>
+
+    <p id="errorMessage" style="color: red;"></p>
+
+    <p>版权所有 © 2023</p>
+
+    <script>
+        function checkInput() {
+            var input = document.getElementById("inputField").value;
+            if (input === "1") {
+                window.location.href = "your_target_page.html"; // 将 your_target_page.html 替换成实际的目标页面
+            } else {
+                document.getElementById("errorMessage").textContent = "输入错误，请输入 1";
+            }
+        }
+    </script>
 </body>
 </html>
