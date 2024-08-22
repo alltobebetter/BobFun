@@ -10,10 +10,16 @@
             padding: 0;
             height: 100%;
             width: 100%;
-            background-color: black;
+            background-color: white; /* 初始为白色 */
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        #start-message {
+            font-family: SimSun, "宋体", serif; /* 使用宋体 */
+            font-size: 3em; /* 设置字体大小 */
+            cursor: pointer; /* 显示为可点击的指针 */
         }
 
         video {
@@ -21,25 +27,33 @@
             max-height: 100%;
             width: auto;
             height: auto;
-            display: block;
+            display: none; /* 初始隐藏视频 */
             controls: none;
         }
     </style>
 </head>
 <body>
-    <video autoplay loop playsinline muted>
+    <div id="start-message">点击开始游玩</div>
+    <video loop playsinline>
         <source src="./img/原神.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
-        // 获取 video 元素
+        // 获取 video 元素和开始消息元素
         const video = document.querySelector('video');
+        const startMessage = document.getElementById('start-message');
 
-        // 0.5 秒后解除静音
-        setTimeout(() => {
-            video.muted = false;
-        }, 500);
+        // 监听点击事件
+        startMessage.addEventListener('click', () => {
+            // 隐藏开始消息
+            startMessage.style.display = 'none';
+            // 显示视频并播放
+            video.style.display = 'block';
+            video.play();
+            // 将背景颜色改为黑色
+            document.body.style.backgroundColor = 'black';
+        });
     </script>
 </body>
 </html>
