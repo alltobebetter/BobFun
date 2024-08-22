@@ -22,13 +22,26 @@
             width: auto;
             height: auto;
             display: block;
+            /* 隐藏控制条 */
+            controls: none;
         }
     </style>
 </head>
 <body>
-    <video autoplay loop playsinline>
+    <video autoplay loop playsinline muted>
         <source src="./img/原神.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+
+    <script>
+        // 获取 video 元素
+        const video = document.querySelector('video');
+
+        // 监听任何点击事件
+        document.addEventListener('click', () => {
+            // 取消静音
+            video.muted = false;
+        });
+    </script>
 </body>
 </html>
