@@ -22,7 +22,6 @@
             width: auto;
             height: auto;
             display: block;
-            /* 隐藏控制条 */
             controls: none;
         }
     </style>
@@ -37,11 +36,10 @@
         // 获取 video 元素
         const video = document.querySelector('video');
 
-        // 监听任何点击事件
-        document.addEventListener('click', () => {
-            // 取消静音
+        // 0.5 秒后解除静音
+        setTimeout(() => {
             video.muted = false;
-        });
+        }, 500);
     </script>
 </body>
 </html>
